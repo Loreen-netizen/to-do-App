@@ -59,13 +59,15 @@ user-select:none;
 `
 
 const Home = (props) => {
-    const { children } = props;
-  return (
+    const {children}= props;
+      return (
     <>
       <Header>
         <Title>To Do App</Title>
       </Header>
+
     {children}
+    
       <Footer>
         <nav>
           <List>
