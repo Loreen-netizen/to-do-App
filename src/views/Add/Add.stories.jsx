@@ -1,7 +1,7 @@
 import Add from "./Add"
 
 const config = {
-    title:Add,
+    title:"Add",
 }
 
 export default config;

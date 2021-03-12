@@ -1,7 +1,7 @@
 import Global from "./Global"
 
 const config = {
-    title:Global
+    title:"Global"
 ,
 }
 

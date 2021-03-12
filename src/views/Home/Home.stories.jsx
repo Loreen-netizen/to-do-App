@@ -1,7 +1,7 @@
 import Home from "./Home"
 
 const config = {
-    title:Home
+    title:"Home"
 ,
 }
 

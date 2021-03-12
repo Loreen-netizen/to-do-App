@@ -1,7 +1,7 @@
 import Edit from "./Edit"
 
 const config = {
-    title:Edit,
+    title:"Edit",
 }
 
 export default config;
