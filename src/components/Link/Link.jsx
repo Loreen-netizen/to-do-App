@@ -1,27 +1,36 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
+const LinkElement = styled.a`
+  font-weight: 800;
+  padding: 1rem;
+  display: inline-block;
+  text-transform: uppercase;
+  user-select: none;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+  background: #b4b8c5;
 
-const Link = styled.a`
-font-weight: 800;
-padding:1rem;
-display:inline-block;
-cursor:pointer;
-text-transform: uppercase;
-user-select:none;
-font-family: Arial, sans-serif;
-border: 1px solid #CCC;
-border-radius: 8px
-background: #B4B8C5;
-color:${props => props.disabled? "#999": "#222"};
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 
-&:hover{
-    background: #E9EBF8
-}
+  color: ${(props) => (props.disabled ? "#999" : "#222")};
 
-&:active{
-    background:#EDD4DE;
-}
-`
+  &:hover {
+    background: ${(props) => (props.disabled ? "#EEE" : "#BBB")};
+  }
 
+  &:active {
+    background: ${(props) => (props.disabled ? "#EEE" : "#999")};
+  }
+`;
+
+const Link = (props) => {
+  const { children, disabled, url } = props;
+  return (
+    <LinkElement href={disabled ? undefined : url} disabled={disabled}>
+      {children}
+    </LinkElement>
+  );
+};
 
 export default Link;
