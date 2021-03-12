@@ -16,7 +16,6 @@ const Title = styled.h1`
   letter-spacing: -1px;
 `;
 
-const Content = styled.main``;
 const Footer = styled.footer`
   background: #f7a2dd;
   border-radius: 8px;
