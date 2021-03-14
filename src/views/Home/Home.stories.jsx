@@ -1,5 +1,5 @@
 import Home from "./Home"
-
+import Global from "../../components/Global/Global"
 const config = {
     title:"views/Home"
 ,
@@ -7,7 +7,7 @@ const config = {
 
 export default config;
 
-const Default = () => <Home/>
+const Default = () => <Global><Home/></Global>
 export {
     Default
 }

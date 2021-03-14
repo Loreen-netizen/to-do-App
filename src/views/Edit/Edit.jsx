@@ -1,8 +1,10 @@
 import React from "react";
-
-const Edit = ()=>{
-    return(
-        <div>Edit</div>
-    )
-}
-export default Edit
+import Layout from "../../components/Layout/Layout";
+const Edit = () => {
+  return (
+    <Layout activePage= "edit">
+      <div>Edit</div>
+    </Layout>
+  );
+};
+export default Edit;

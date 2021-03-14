@@ -1,8 +1,10 @@
 import React from "react";
-
-const Add = ()=>{
-    return(
-        <div>Add</div>
-    )
-}
-export default Add
+import Layout from "../../components/Layout/Layout";
+const Add = () => {
+  return (
+    <Layout activePage="add">
+      <div>Add</div>
+    </Layout>
+  );
+};
+export default Add;
