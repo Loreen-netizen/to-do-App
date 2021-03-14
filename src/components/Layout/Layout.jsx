@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Link from "../Link/Link"
 
 const Header = styled.header`
   background: #b5179e;
@@ -39,23 +40,6 @@ const List = styled.ul`
 
 const LinkWrap = styled.li`
 width: 50% `
-
-const Link = styled.a`
-font-weight: bold;
-padding:1rem;
-display:block;
-cursor:pointer;
-text-transform: uppercase;
-user-select:none;
-
-&:hover{
-    background: #E9EBF8
-}
-
-&:active{
-    background:#EDD4DE;
-}
-`
 
 const Home = (props) => {
     const {children, activePage="home"}= props;

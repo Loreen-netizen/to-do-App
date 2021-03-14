@@ -1,4 +1,5 @@
 import Link from "./Link";
+import Global from "../Global/Global";
 
 const config = {
   title: "components/Link",
@@ -6,12 +7,25 @@ const config = {
 
 export default config;
 
-const Default = () => {
-  return <Link>Click Me!</Link>;
-};
+const Default = () => (
+  <Global>
+    {" "}
+    <Link url="/test">Click Me!</Link>{" "}
+  </Global>
+);
+const Full = () => (
+  <Global>
+    <Link url="/test" fullWidth>
+      Click Me!
+    </Link>
+  </Global>
+);
+const Disabled = () => (
+  <Global>
+    <Link disabled url="/test">
+      Click Me!
+    </Link>
+  </Global>
+);
 
-const Disabled= () => {
-    return <Link disabled>Click Me!</Link>;
-  };
-
-export { Default, Disabled };
+export { Default, Full, Disabled };

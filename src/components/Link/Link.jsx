@@ -9,8 +9,10 @@ const LinkElement = styled.a`
   font-family: Arial, sans-serif;
   border: 1px solid #ccc;
   border-radius: 1em;
-  background: #b4b8c5;
-
+  background: #b4b8c5;\
+   text-decoration:none;
+   text-align: center;
+   width: ${(props) => (props.fullWidth ? "100%" : "auto")};
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 
   color: ${(props) => (props.disabled ? "#999" : "#222")};
@@ -25,9 +27,9 @@ const LinkElement = styled.a`
 `;
 
 const Link = (props) => {
-  const { children, disabled, url } = props;
+  const { children, disabled, url ,fullWidth} = props;
   return (
-    <LinkElement href={disabled ? undefined : url} disabled={disabled}>
+    <LinkElement href={disabled ? undefined : url} fullWidth={fullWidth} disabled={disabled}>
       {children}
     </LinkElement>
   );
