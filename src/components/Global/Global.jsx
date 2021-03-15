@@ -9,6 +9,8 @@ body{
     overflow-x: hidden;
     overflow-y:scroll;
     font-family: Arial, sans-serif;
+    padding: 0 0 8rem 0!imporant;
+    margin: 0 !imporant;
 }
 `
 

@@ -12,15 +12,17 @@ const List = styled.ul`
 
 const Item = styled.li`
   margin: 0.1rem 0;
-  background: #eee;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   display:flex;
   width:100%;
   align-items:center;
+  border-bottom: 1px dotted grey;
 `;
 const Name = styled.h2`
 flex-grow:1;
-text-align:center;`;
+text-align:center;
+font-size:1.1rem;`;
+
 
 
 const Task = (props) => {

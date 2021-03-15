@@ -1,9 +1,13 @@
 import React from "react";
 import Layout from "../../components/Layout/Layout";
+import {TextField} from "@material-ui/core"
+
 const Add = () => {
   return (
     <Layout activePage="add">
-      <div>Add</div>
+      <form>
+<TextField label="Task Name"/>
+      </form>
     </Layout>
   );
 };

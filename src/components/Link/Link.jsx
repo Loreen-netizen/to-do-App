@@ -12,6 +12,7 @@ const LinkElement = styled.a`
   background: #b4b8c5;\
    text-decoration:none;
    text-align: center;
+   white-space: nowrap;
    width: ${(props) => (props.fullWidth ? "100%" : "auto")};
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 
