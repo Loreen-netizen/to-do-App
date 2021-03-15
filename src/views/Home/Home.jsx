@@ -16,15 +16,21 @@ const Item = styled.li`
   padding: 1rem;
   display:flex;
   width:100%;
+  align-items:center;
 `;
-const Name = styled.h2``;
-const Task = () => {
+const Name = styled.h2`
+flex-grow:1;
+text-align:center;`;
+
+
+const Task = (props) => {
+    const {id, name, checked} = props;
   return (
     <Item>
-      <Checkbox/>
-      <Name>Name Of Task</Name>
+      <Checkbox checked={checked}/>
+      <Name>{name}</Name>
       <div>
-         <IconButton><Edit/></IconButton> 
+         <IconButton href={`edit/${id}`}><Edit/></IconButton> 
        <IconButton><Delete /></IconButton> 
       </div>
     </Item>
@@ -32,9 +38,11 @@ const Task = () => {
 };
 
 const Home = (props) => {
-  const { children } = props;
+  const { list} = props;
   return (
     <Layout activePage="home">
+        {list.map(({id,name,checked})=>(
+        <Task id = {id} name ={name} checked={checked}/>))}
       <List>
         <Task />
         <Task />
