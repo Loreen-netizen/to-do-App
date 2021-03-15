@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
 body{
     overflow-x: hidden;
     overflow-y:scroll;
+    font-family: Arial, sans-serif;
 }
 `
 

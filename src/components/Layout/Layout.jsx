@@ -48,7 +48,7 @@ const PAGE_TITLE_MAP = {
   edit: "Editing Item",
 };
 
-const Home = (props) => {
+const Layout = (props) => {
   const { children, activePage } = props;
   return (
     <>
@@ -78,4 +78,4 @@ const Home = (props) => {
     </>
   );
 };
-export default Home;
+export default Layout;
