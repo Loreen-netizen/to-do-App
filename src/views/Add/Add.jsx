@@ -17,7 +17,6 @@ const StyledButton = styled(Button)`
 `;
 
 const Add = (props) => {
-    
   const { onSave } = props;
   const [name, setName] = useState("");
 
@@ -36,13 +35,19 @@ const Add = (props) => {
         <TextField
           onChange={handleTextChange}
           label="Task Name"
-          size="large"
+          size="medium"
           fullWidth
           variant="outlined"
           value={name}
         />
-        <StyledButton variant="contained" type="submit" size="large">
-          Save Item
+        <StyledButton
+          variant="contained"
+          type="submit"
+          size="large"
+          color="primary"
+          disabled={name.trim() === ""}
+        >
+          Save Task
         </StyledButton>
       </Form>
     </Layout>
