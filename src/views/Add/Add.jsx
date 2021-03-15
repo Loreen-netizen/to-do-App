@@ -1,13 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
+import styled from "styled-components";
 import Layout from "../../components/Layout/Layout";
-import {TextField} from "@material-ui/core"
+import { TextField, Button } from "@material-ui/core";
 
-const Add = () => {
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+`;
+
+const StyledButton = styled(Button)`
+  && {
+    margin-top: 1rem;
+  }
+`;
+
+const Add = (props) => {
+    
+  const { onSave } = props;
+  const [name, setName] = useState("");
+
+  const handleTextChange = (event) => {
+    const { value } = event.target;
+    setName(value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSave(name);
+  };
   return (
     <Layout activePage="add">
-      <form>
-<TextField label="Task Name"/>
-      </form>
+      <Form onSubmit={handleSubmit}>
+        <TextField
+          onChange={handleTextChange}
+          label="Task Name"
+          size="large"
+          fullWidth
+          variant="outlined"
+          value={name}
+        />
+        <StyledButton variant="contained" type="submit" size="large">
+          Save Item
+        </StyledButton>
+      </Form>
     </Layout>
   );
 };
