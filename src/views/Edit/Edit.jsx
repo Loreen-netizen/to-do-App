@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Layout from "../../components/Layout/Layout";
 import { TextField, Button } from "@material-ui/core";
 
+
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -17,7 +18,7 @@ const StyledButton = styled(Button)`
 `;
 
 const Edit = (props) => {
-  const { onSave, initialName } = props;
+  const { onSave, initialName, taskId } = props;
   const [name, setName] = useState(initialName || "");
 
   const handleTextChange = (event) => {
@@ -27,7 +28,7 @@ const Edit = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSave(name);
+    onSave(taskId, name);
   };
   return (
     <Layout activePage="edit">

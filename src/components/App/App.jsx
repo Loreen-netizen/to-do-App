@@ -1,17 +1,48 @@
-import React from "react";
-import { HashRouter, Switch, Route } from "react-router-dom";
+import React, { useState } from "react";
+import { v4 as createId } from "uuid";
+import { HashRouter, Switch, Route, useParams } from "react-router-dom";
 
 import Home from "../../views/Home/Home";
 import Add from "../../views/Add/Add";
 import Edit from "../../views/Edit/Edit";
+
+const EditWrapper = (props) => {
+  const { list, ...remainingProps } = props;
+  const { taskId } = useParams();
+  const { name } = list.find((item) => item.id === taskId);
+
+  return <Edit {...remainingProps} taskId={taskId} initialName={name} />;
+};
+
 const App = () => {
-  return;
-  <HashRouter>
-    <Switch>
-      <Route path="/" children={<Home/>}/>
-      <Route path="/" children={<Home/>}/>
-      <Route path="/" children={<Home/>}/>
-    </Switch>
-  </HashRouter>;
+  const [list, setList] = useState([]);
+
+  const handleAddItem = (name) => {
+    setList([{ id: createId, name, checked: false }, ...list]);
+  };
+
+  const handleEditItem = (taskId, name) => {
+    const newList = list.map((item) => {
+      if (item.id !== taskId) return item;
+
+      return {
+        ...item,
+        name,
+      };
+    });
+    setList(newList);
+  };
+  return (
+    <HashRouter>
+      <Switch>
+        <Route
+          path="/edit:taskId"
+          children={<EditWrapper list={list} onSave={handleEditItem} />}
+        />
+        <Route path="/add/" children={<Add onSave={handleAddItem} />} />
+        <Route path="/" children={<Home list={list} />} />
+      </Switch>
+    </HashRouter>
+  );
 };
 export default App;

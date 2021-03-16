@@ -9,12 +9,16 @@ export default config;
 
 const Default = () => (
   <Global>
-    <Edit onSave={console.log} />
+    <Edit onSave={console.log} taskId={faker.random.uuid()} />
   </Global>
 );
 const InitialValue = () => (
   <Global>
-    <Edit onSave={console.log} initialName={faker.lorem.words()} />
+    <Edit
+      onSave={console.log}
+      taskId={faker.random.uuid()}
+      initialName={faker.lorem.words()}
+    />
   </Global>
 );
 
