@@ -9,7 +9,8 @@ import Edit from "../../views/Edit/Edit";
 const EditWrapper = (props) => {
   const { list, ...remainingProps } = props;
   const { taskId } = useParams();
-  const { name } = list.find((item) => item.id === taskId);
+  console.log({taskId})
+  const { name } = list.find((item) => console.log(item.id));
 
   return <Edit {...remainingProps} taskId={taskId} initialName={name} />;
 };
@@ -19,6 +20,24 @@ const App = () => {
 
   const handleAddItem = (name) => {
     setList([{ id: createId, name, checked: false }, ...list]);
+    window.location.replace("#/");
+  };
+
+  const handleCheckToggle = (taskId) => {
+    const newList = list.map((item) => {
+      if (item.id !== taskId) return item;
+
+      return {
+        ...item,
+        checked: !item.checked,
+      };
+    });
+    setList(newList);
+  };
+
+  const handleDeleteItem = (taskId) => {
+    const newList = list.filter((item) => item.id !== taskId);
+    setList(newList);
   };
 
   const handleEditItem = (taskId, name) => {
@@ -31,16 +50,26 @@ const App = () => {
       };
     });
     setList(newList);
+    window.location.replace("#/");
   };
   return (
     <HashRouter>
       <Switch>
         <Route
-          path="/edit:taskId"
+          path="/edit/:taskId"
           children={<EditWrapper list={list} onSave={handleEditItem} />}
         />
         <Route path="/add/" children={<Add onSave={handleAddItem} />} />
-        <Route path="/" children={<Home list={list} />} />
+        <Route
+          path="/"
+          children={
+            <Home
+              list={list}
+              onCheckToggle={handleCheckToggle}
+              onDeleteItem={handleDeleteItem}
+            />
+          }
+        />
       </Switch>
     </HashRouter>
   );
