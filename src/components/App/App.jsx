@@ -10,7 +10,7 @@ const EditWrapper = (props) => {
   const { list, ...remainingProps } = props;
   const { taskId } = useParams();
   console.log({taskId})
-  const { name } = list.find((item) => console.log(item.id));
+  const { name } = list.find((item) => item.id === taskId);
 
   return <Edit {...remainingProps} taskId={taskId} initialName={name} />;
 };
@@ -19,7 +19,7 @@ const App = () => {
   const [list, setList] = useState([]);
 
   const handleAddItem = (name) => {
-    setList([{ id: createId, name, checked: false }, ...list]);
+    setList([{ id: createId(), name, checked: false }, ...list]);
     window.location.replace("#/");
   };
 
