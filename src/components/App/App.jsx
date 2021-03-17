@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as createId } from "uuid";
 import { HashRouter, Switch, Route, useParams } from "react-router-dom";
 
@@ -9,14 +9,31 @@ import Edit from "../../views/Edit/Edit";
 const EditWrapper = (props) => {
   const { list, ...remainingProps } = props;
   const { taskId } = useParams();
-  console.log({taskId})
+  console.log({ taskId });
   const { name } = list.find((item) => item.id === taskId);
 
   return <Edit {...remainingProps} taskId={taskId} initialName={name} />;
 };
 
 const App = () => {
+  const [loaded, setLoaded] = useState(false);
   const [list, setList] = useState([]);
+
+  useEffect(() => {
+    const listAsString = window.localStorage.getItem("list");
+
+    if (listAsString) {
+      setList(JSON.parse(listAsString));
+    }
+
+    setLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (loaded) {
+      window.localStorage.setItem("list", JSON.stringify(list));
+    }
+  }, [list, loaded]);
 
   const handleAddItem = (name) => {
     setList([{ id: createId(), name, checked: false }, ...list]);

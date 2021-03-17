@@ -61,9 +61,7 @@ const Home = (props) => {
         />
       ))}
       <List>
-        <Task />
-        <Task />
-        <Task />
+        
       </List>
     </Layout>
   );
